@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    run-on: ubuntu-latest
+    runs-on: ubuntu-latest
     steps: 
       - name: code checkout
         uses: actions/checkout@v4
@@ -14,7 +14,7 @@ jobs:
         uses: mvn install
       
   Testing:
-    run-on: ubuntu-latest
+    runs-on: ubuntu-latest
     needs: build
     steps:
       - name: code checkout
