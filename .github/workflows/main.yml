@@ -11,7 +11,7 @@ jobs:
       - name: code checkout
         uses: actions/checkout@v4
       - name: build project
-        uses: mvn install
+        run: mvn install
       
   Testing:
     runs-on: ubuntu-latest
@@ -20,8 +20,8 @@ jobs:
       - name: code checkout
         uses: actions/checkout@v4
       - name: Testing project
-        uses: mvn test
+        run: mvn test
       - name: checkstyle
-        uses: mvn checkstyle:checkstyle
+        run: mvn checkstyle:checkstyle
         
   
