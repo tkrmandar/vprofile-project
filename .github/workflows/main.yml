@@ -1,0 +1,27 @@
+name: build-karo
+on:
+  push:
+    branches: 
+      - main
+
+jobs:
+  build:
+    run-on: ubuntu-latest
+    steps: 
+      - name: code checkout
+        uses: actions/checkout@v4
+      - name: build project
+        uses: mvn install
+      
+  Testing:
+    run-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: code checkout
+        uses: actions/checkout@v4
+      - name: Testing project
+        uses: mvn test
+      - name: checkstyle
+        uses: mvn checkstyle:checkstyle
+        
+  
