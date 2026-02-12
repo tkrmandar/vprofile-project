@@ -3,7 +3,7 @@ on:
   push:
     branches: 
       - main
-      
+
   pull_request:
     branches:
       - main
@@ -14,7 +14,7 @@ on:
     - cron: "10 14 * * 1-5"
 
 permissions:
-  contents: read
+  contents: read # by default worflow gets a read/write access token, restrict it 
 
 jobs:
   build:
@@ -38,10 +38,15 @@ jobs:
     needs: build
     steps:
       - name: code checkout
+        if: github.ref == 'refs/heads/main' 
         uses: actions/checkout@v4
       - name: Testing project
+        if: github.ref == 'refs/heads/main'
         run: mvn test
       - name: checkstyle
         run: mvn checkstyle:checkstyle
+      - name: invalid branch for testing
+        if: github.ref != 'refs/heads/main'
+        run: echo "skipping testing!!" 
         
   
