@@ -57,7 +57,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: run security checks
-        uses: aquasecurity/trivy-action@0.69.1
+        uses: aquasecurity/trivy-action@v0.69.1
         with:
           scan-type: "fs"
           scan-ref: .
