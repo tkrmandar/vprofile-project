@@ -53,6 +53,9 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     steps:
+      - name: code chcekout
+        uses: actions/checkout@v4
+
       - name: run security checks
         uses: aquasecurity/trivy-action@0.33.1
         with:
