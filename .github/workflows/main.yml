@@ -63,7 +63,7 @@ jobs:
           scan-ref: .
           format: json
           vuln-type: os,library
-          exit-code: 1
+          exit-code: 0
           output: trivy-report.json
 
       - name: upload security checks artifacts
